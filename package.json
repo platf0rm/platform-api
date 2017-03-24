@@ -1,0 +1,19 @@
+{
+  "name": "platform-api",
+  "version": "1.0.0",
+  "description": "API for platf0rm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platf0rm/platform-api.git"
+  },
+  "author": "platf0rm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/platf0rm/platform-api/issues"
+  },
+  "homepage": "https://github.com/platf0rm/platform-api#readme"
+}
