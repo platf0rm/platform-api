@@ -1,17 +1,26 @@
 const express = require('express');
 const app = express();
-const api = express.Router();
 
 app.set('view engine', 'pug');
 
-const HelloController = require('./controllers/hello_controller');
 const ApiController = require('./controllers/api_controller');
 
-api.use('/', ApiController.index);
+const ThreadController = require('./controllers/thread_controller');
+const CommentController = require('./controllers/comment_controller');
+const VoteController = require('./controllers/vote_controller');
+const MediaController = require('./controllers/media_controller');
 
-app.use('/api', api);
+// configure routes
+app.get('/api/threads/:thread_id/comment/:comment_id', ApiController.not_implemented);
+app.get('/api/threads/:thread_id/comments', ApiController.not_implemented);
+app.get('/api/media/:media_id', ApiController.not_implemented);
+app.get('/api/threads', ApiController.not_implemented);
+app.get('/api/comment/:comment_id/votes', ApiController.not_implemented);
+app.get('/api/threads/:thread_id/votes', ApiController.not_implemented);
 
-app.get('/', HelloController.index);
-app.get('/render/:to', HelloController.renderTest)
+app.post('/api/threads/:thread_id/comments', ApiController.not_implemented);
+app.post('/api/threads/', ApiController.not_implemented);
+app.post('/api/comment/:comment_id/votes', ApiController.not_implemented);
+app.post('/api/threads/:thread_id/votes', ApiController.not_implemented);
 
 app.listen(8080, () => console.log('ready'))
