@@ -1,4 +1,5 @@
 const models = require('../models');
+const Boom = require('boom');
 
 class VoteController {
   static createByThreadId(req, res) {
@@ -15,7 +16,7 @@ class VoteController {
         res.send({ result: 'ok' });
       })
       .catch(() => {
-        res.send({ error: true });
+        res.send(Boom.badImplementation().output);
       });
   }
 }
