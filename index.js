@@ -1,6 +1,5 @@
-'use strict';
-
 const express = require('express');
+
 const app = express();
 
 const VoteRouter = require('./routers/vote_router');

@@ -1,21 +1,19 @@
-'use strict';
-
 const models = require('../models');
 
 class VoteController {
-  createByThreadId(req, res) {
-    const thread_id = req.params.thread_id;
+  static createByThreadId(req, res) {
+    const threadId = req.params.thread_id;
 
     models.Vote
       .build({
         direction: 'up',
-        vote_to: thread_id
+        vote_to: threadId,
       })
       .save()
       .then(() => {
-        res.send({result: 'ok'});
+        res.send({ result: 'ok' });
       });
   }
 }
 
-module.exports = new VoteController();
+module.exports = VoteController;

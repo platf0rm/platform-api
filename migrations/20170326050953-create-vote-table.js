@@ -1,15 +1,13 @@
-'use strict';
-
-var {VoteModel} = require('../models/vote');
+const { VoteModel } = require('../models/vote');
 
 module.exports = {
-  up: function (queryInterface, Sequelize) {
+  up: (queryInterface) => {
     queryInterface.createTable(
-      'votes', VoteModel
-    )
+      'votes', VoteModel,
+    );
   },
 
-  down: function (queryInterface, Sequelize) {
+  down: () => {
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
@@ -17,5 +15,5 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-  }
+  },
 };
