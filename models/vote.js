@@ -6,7 +6,7 @@ const VoteModel = {
     primaryKey: true,
     autoIncrement: true,
   },
-  direction: Sequelize.ENUM('up', 'down'),
+  direction: Sequelize.INTEGER,
   vote_to: Sequelize.INTEGER,
 };
 

@@ -2,9 +2,7 @@ const { VoteModel } = require('../models/vote');
 
 module.exports = {
   up: (queryInterface) => {
-    queryInterface.createTable(
-      'votes', VoteModel,
-    );
+    queryInterface.createTable('votes', VoteModel);
   },
 
   down: () => {

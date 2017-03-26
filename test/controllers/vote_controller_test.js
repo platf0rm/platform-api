@@ -1,3 +1,13 @@
+const fs = require('fs');
+const dotenv = require('dotenv');
+
+const envConfig = dotenv.parse(fs.readFileSync('./test/.env.test'));
+Object.keys(envConfig).forEach((k) => {
+  if (k) {
+    process.env[k] = envConfig[k];
+  }
+});
+
 const assert = require('assert');
 const request = require('supertest');
 const app = require('../../index').app;
@@ -13,7 +23,7 @@ describe('Vote Controller', () => {
         .end((err, res) => {
           if (err) throw err;
           assert.equal('ok', res.body.result);
-          assert.equal('up', res.body.payload.direction);
+          assert.equal(1, res.body.payload.direction);
           done();
         });
     });
