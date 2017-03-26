@@ -1,5 +1,6 @@
+'use strict';
+
 const Sequelize = require('sequelize');
-const sequelize = require('../db/connection').sequelize;
 
 const VoteModel = {
   id: {
