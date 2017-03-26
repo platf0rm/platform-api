@@ -1,0 +1,1 @@
+CREATE DATABASE platform_api_dev OWNER postgres TABLESPACE pg_default;
