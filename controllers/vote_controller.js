@@ -13,10 +13,10 @@ class VoteController {
       })
       .save()
       .then((payload) => {
-        res.send({ result: 'ok', payload });
+        res.json({ result: 'ok', payload });
       })
       .catch((reason) => {
-        res.send(Boom.badImplementation(reason).output);
+        res.json(Boom.badImplementation(reason).output);
       });
   }
 }
