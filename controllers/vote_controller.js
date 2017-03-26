@@ -12,11 +12,11 @@ class VoteController {
         vote_to: threadId,
       })
       .save()
-      .then(() => {
-        res.send({ result: 'ok' });
+      .then((payload) => {
+        res.send({ result: 'ok', payload });
       })
-      .catch(() => {
-        res.send(Boom.badImplementation().output);
+      .catch((reason) => {
+        res.send(Boom.badImplementation(reason).output);
       });
   }
 }
