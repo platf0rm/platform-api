@@ -16,4 +16,4 @@ class VoteController {
   }
 }
 
-module.exports.VoteController = new VoteController();
+module.exports = new VoteController();

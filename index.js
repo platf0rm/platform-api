@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 
-const {VoteController} = require('./controllers/vote_controller');
+const VoteRouter = require('./routers/vote_router');
 
-app.get('/api/threads/:thread_id/votes', VoteController.createByThreadId);
+app.use('/api/votes', VoteRouter);
 
-app.listen(8080, () => console.log('ready'))
+app.listen(8080, () => console.log('ready'));
