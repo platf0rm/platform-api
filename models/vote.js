@@ -11,9 +11,12 @@ const VoteModel = {
   vote_to: Sequelize.INTEGER,
 }
 
-const Vote = sequelize.define('vote', VoteModel, {
-    timestamps: false
-});
+module.exports = (sequelize, DataTypes) => {
+  const Vote = sequelize.define('Vote', VoteModel, {
+      timestamps: false,
+      tableName: 'votes'
+  });
+  return Vote;
+}
 
 module.exports.VoteModel = VoteModel;
-module.exports.Vote = Vote;

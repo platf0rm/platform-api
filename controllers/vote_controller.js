@@ -1,10 +1,10 @@
-const {Vote} = require('../models/vote');
+const models = require('../models');
 
 class VoteController {
   createByThreadId(req, res) {
     const thread_id = req.params.thread_id;
 
-    Vote
+    models.Vote
       .build({
         direction: 'up',
         vote_to: thread_id
