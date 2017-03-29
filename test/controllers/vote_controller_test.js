@@ -13,10 +13,10 @@ const request = require('supertest');
 const app = require('../../index').app;
 
 describe('Vote Controller', () => {
-  describe('#createByThreadId()', () => {
-    it('should create a new vote', (done) => {
+  describe('#castVote()', () => {
+    it('should cast a vote', (done) => {
       request(app)
-        .get('/api/votes/addto/5/up')
+        .get('/api/votes/1/up')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200)

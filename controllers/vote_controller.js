@@ -2,8 +2,8 @@ const models = require('../models');
 const Boom = require('boom');
 
 class VoteController {
-  static createByThreadId(req, res) {
-    const threadId = req.params.thread_id;
+  static castVote(req, res) {
+    const postId = req.params.post_id;
     let direction;
 
     switch (req.params.direction) {
@@ -18,7 +18,7 @@ class VoteController {
       models.Vote
         .build({
           direction,
-          vote_to: threadId,
+          vote_to: postId,
         })
         .save()
         .then((payload) => {
