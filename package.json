@@ -4,7 +4,8 @@
   "description": "API for platf0rm",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/**/*.js",
+    "test": "npm run lint",
+    "test-mocha": "./node_modules/.bin/mocha test/**/*.js",
     "sc": "./node_modules/.bin/sequelize",
     "lint": "./node_modules/.bin/eslint ./controllers ./migrations ./models ./routers ./test"
   },
