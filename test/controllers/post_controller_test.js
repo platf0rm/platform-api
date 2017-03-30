@@ -63,7 +63,7 @@ describe('Post Controller', () => {
         .end((err, res) => {
           if (err) throw err;
 
-          let d = res.body.payload.description === null;
+          const d = res.body.payload.description === null;
 
           assert.equal('ok', res.body.result);
           assert.strictEqual(d, true);
@@ -105,7 +105,7 @@ describe('Post Controller', () => {
         .end((err, res) => {
           if (err) throw err;
 
-          let t = res.body.payload.text === null;
+          const t = res.body.payload.text === null;
 
           assert.equal('ok', res.body.result);
           assert.strictEqual(t, true);
