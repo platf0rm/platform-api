@@ -1,0 +1,137 @@
+{
+  "name": "Media",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {
+      "table": "media"
+    }
+  },
+  "display": [],
+  "hidden": [],
+  "properties": {
+    "threadId": {
+      "type": "Number",
+      "required": true,
+      "precision": 10,
+      "scale": 0,
+      "postgresql": {
+        "columnName": "thread_id",
+        "dataType": "integer",
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "User ID"
+      }
+    },
+    "userId": {
+      "type": "Number",
+      "required": true,
+      "precision": 10,
+      "scale": 0,
+      "postgresql": {
+        "columnName": "user_id",
+        "dataType": "integer",
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "User ID"
+      }
+    },
+    "type": {
+      "type": "String",
+      "required": true,
+      "postgresql": {
+        "columnName": "type",
+        "dataType": "varchar",
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "media type, VIDEO or IMAGE or LINK",
+        "readonly": true
+      }
+    },
+    "url": {
+      "type": "String",
+      "required": true,
+      "postgresql": {
+        "columnName": "url",
+        "dataType": "varchar",
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "Url of media"
+      }
+    },
+    "dateCreated": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "created",
+        "dataType": "timestamptz",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "display": {
+        "label": "Created",
+        "readonly": true
+      }
+    },
+    "dateUpdated": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "updated",
+        "dataType": "timestamptz",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "display": {
+        "label": "Updated",
+        "readonly": true
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "thread": {
+      "type": "belongsTo",
+      "model": "Thread",
+      "foreignKey": "threadId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "userId"
+    },
+    "comment": {
+      "type": "belongsTo"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": {
+
+  }
+}

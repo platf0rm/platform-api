@@ -1,0 +1,116 @@
+{
+  "name": "Thread",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {
+      "table": "thread"
+    }
+  },
+  "display": [],
+  "hidden": [],
+  "properties": {
+    "userId": {
+      "type": "Number",
+      "required": true,
+      "precision": 10,
+      "scale": 0,
+      "postgresql": {
+        "columnName": "user_id",
+        "dataType": "integer",
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "User ID"
+      }
+    },
+    "title": {
+      "type": "String",
+      "required": true,
+      "postgresql": {
+        "columnName": "title",
+        "dataType": "varchar",
+        "nullable": "NO"
+      }
+    },
+    "description": {
+      "type": "String",
+      "required": true,
+      "postgresql": {
+        "columnName": "description",
+        "dataType": "text",
+        "nullable": "NO"
+      }
+    },
+    "dateCreated": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "created",
+        "dataType": "timestamptz",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "display": {
+        "label": "Created",
+        "readonly": true
+      }
+    },
+    "dateUpdated": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "updated",
+        "dataType": "timestamptz",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "display": {
+        "label": "Updated",
+        "readonly": true
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "userId"
+    },
+    "media": {
+      "type": "hasOne",
+      "model": "Media",
+      "foreignKey": "threadId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "threadId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": {
+
+  }
+}

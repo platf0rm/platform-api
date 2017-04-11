@@ -1,0 +1,147 @@
+{
+  "name": "Comment",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {
+      "table": "comment"
+    }
+  },
+  "display": [],
+  "hidden": [],
+  "properties": {
+    "threadId": {
+      "type": "Number",
+      "required": true,
+      "precision": 10,
+      "scale": 0,
+      "postgresql": {
+        "columnName": "thread_id",
+        "dataType": "integer",
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "User ID"
+      }
+    },
+    "userId": {
+      "type": "Number",
+      "required": true,
+      "precision": 10,
+      "scale": 0,
+      "postgresql": {
+        "columnName": "user_id",
+        "dataType": "integer",
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "User ID"
+      }
+    },
+    "parentId": {
+      "type": "Number",
+      "required": true,
+      "precision": 10,
+      "scale": 0,
+      "postgresql": {
+        "columnName": "parent_id",
+        "dataType": "integer",
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "User ID"
+      }
+    },
+    "text": {
+      "type": "String",
+      "required": true,
+      "postgresql": {
+        "columnName": "text",
+        "dataType": "varchar",
+        "nullable": "NO"
+      },
+      "display": {
+        "label": "Comment text"
+      }
+    },
+    "dateCreated": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "created",
+        "dataType": "timestamptz",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "display": {
+        "label": "Created",
+        "readonly": true
+      }
+    },
+    "dateUpdated": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "updated",
+        "dataType": "timestamptz",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "display": {
+        "label": "Updated",
+        "readonly": true
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "thread": {
+      "type": "belongsTo",
+      "model": "Thread",
+      "foreignKey": "threadId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "userId"
+    },
+    "media": {
+      "type": "hasOne",
+      "model": "Media",
+      "foreignKey": "threadId"
+    },
+    "comment": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "parentId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": {
+
+  }
+}
