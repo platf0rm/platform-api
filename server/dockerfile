@@ -1,0 +1,16 @@
+FROM node:7.8.0
+MAINTAINER A-Ar Concepcion <a-ar@outlook.com>
+
+# install yarn
+RUN yarn global add nodemon strongloop
+
+# Copy project files to directory
+RUN mkdir /platform-api
+WORKDIR /platform-api
+COPY . /platform-api/server
+RUN ln -s  server/package.json package.json
+RUN ln -s  server/yarn.lock yarn.lock
+
+RUN yarn
+
+CMD yarn; NODE_PATH=. npm start

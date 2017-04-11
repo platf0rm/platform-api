@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  server:
+    build: ./server
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/platform-api/server
+      - server_modules:/platfrom-api
+  db:
+    image: postgres:9.6.1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=platform_dev
+volumes:
+  server_modules:
